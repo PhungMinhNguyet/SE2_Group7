@@ -22,6 +22,14 @@ public class VietNam {
 		this.cityRecovered = cityRecovered;
 		this.cityDeath = cityDeath;
 	}
+	
+	public VietNam(String cityName, int cityCases, int beingTreated, int cityRecovered, int cityDeath) {
+		this.cityName = cityName;
+		this.cityCases = cityCases;
+		this.beingTreated = beingTreated;
+		this.cityRecovered = cityRecovered;
+		this.cityDeath = cityDeath;
+	}
 
 	public int getCityId() {
 		return cityId;

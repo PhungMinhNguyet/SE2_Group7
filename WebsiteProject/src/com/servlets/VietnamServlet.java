@@ -21,39 +21,38 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.models.VietNam;
+import com.resource.VietNamResource;
 
-/**
- * Servlet implementation class VietnamServlet
- */
 @WebServlet("/vietnam")
 public class VietnamServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String vnUrl = "http://localhost:8080/WebsiteProject/rest/vn";
+	private VietNamResource vn;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public VietnamServlet() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void init() {
+		vn = new VietNamResource();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		viewVNInfo(request, response);
+		String action = request.getServletPath();
+		try {
+			switch (action) {
+			case "/addCity":
+				showNewForm(request, response);
+				break;
+			default:
+				viewVNInfo(request, response);
+				break;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
@@ -83,6 +82,12 @@ public class VietnamServlet extends HttpServlet {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("add-city.jsp");
+		dispatcher.forward(request, response);
 	}
 
 }

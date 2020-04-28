@@ -18,7 +18,27 @@
 
 </head>
 <body>
-	<jsp:include page="nav_bar_ad.jsp"></jsp:include><br>
+		<header>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<ul class="nav navbar-nav">
+					<li><a href="<%=request.getContextPath()%>/listuser">User</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="<%=request.getContextPath()%>/listNew">News</a></li>
+				</ul>
+
+				<ul class="nav navbar-nav">
+					<li><a href="<%=request.getContextPath()%>/addCity">Add City</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="<%=request.getContextPath()%>/logout">Log out</a></li>
+				</ul>
+
+			</div>
+		</nav>
+
+	</header><br>
 
 	<div class="row">
 		<div class="container">

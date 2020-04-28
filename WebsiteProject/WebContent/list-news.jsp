@@ -13,12 +13,21 @@
 		<nav class="navbar navbar-inverse">
 			<div class="container-fluid">
 				<ul class="nav navbar-nav">
-					<li><a href="<%=request.getContextPath()%>/listView">List</a></li>
+					<li><a href="<%=request.getContextPath()%>/">Homepage</a></li>
 				</ul>
 				<ul class="nav navbar-nav">
-					<li><a href="<%=request.getContextPath()%>/insertNew"> Add New
-					</a></li>
+					<li><a href="<%=request.getContextPath()%>/insertNew"> Add
+							New </a></li>
 				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="<%=request.getContextPath()%>/listuser">User</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="<%=request.getContextPath()%>/vietnam">VietNam</a></li>
+				</ul>
+				<ul class="nav navbar-nav">
+					<li><a href="<%=request.getContextPath()%>/logout">Log out</a></li>
+				</ul>	
 			</div>
 		</nav>
 	</header>
@@ -35,7 +44,7 @@
 						<th>Title</th>
 						<th>Content</th>
 						<th>Option</th>
-						
+
 					</tr>
 				</thead>
 				<tbody>
@@ -44,7 +53,7 @@
 							<td><c:out value="${anew.id}" /></td>
 							<td><c:out value="${anew.title}" /></td>
 							<td><c:out value="${anew.content}" /></td>
-							
+
 							<td><a href="editNews?id=<c:out value='${anew.id}' />">Edit</a>
 								&nbsp;&nbsp;&nbsp;&nbsp; <a
 								href="deleteNews?id=<c:out value='${anew.id}' />">Delete</a></td>
