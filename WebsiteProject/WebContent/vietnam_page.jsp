@@ -5,6 +5,9 @@
 <html>
 <head>
 <style>
+#header{
+display: inline;
+}
 </style>
 <meta charset="ISO-8859-1">
 <title>Corona Virus Tracker</title>
@@ -19,31 +22,33 @@
 
 	<div class="row">
 		<div class="container">
-			<h1 class="text-center"><img id="banhmi" alt="This is a show" src="https://whstrojan.com/wp-content/uploads/2019/05/ModernXP-73-Globe-icon.png" style="width: 100px">WORLD</h1>
-			<table class="table table-bordered" id="country">
+			<div id = "header">
+				<h1 class="text-center"><img id="banhmi" alt="This is a show" src="https://thumbs.dreamstime.com/b/banh-mi-isolated-white-background-vietnamese-style-sandwich-hand-drawn-asian-food-vietnamese-street-food-great-icon-menu-design-179845742.jpg" style="width: 150px">VIETNAM</h1>
+			</div>
+			<table class="table table-bordered" id="vietnam">
 				<thead>
 					<tr>
-						<th>Country Name</th>
+						<th>City Name</th>
 						<th>Cases</th>
-						<th>Active</th>
+						<th>Being Treated</th>
 						<th>Recovered</th>
 						<th>Deaths</th>
+						
 					</tr>
 				</thead>
 				<tbody style="height: 10px !important; overflow: scroll;">
-					<c:forEach var="listCountry" items="${listCountry}">
+					<c:forEach var="listCity" items="${listCity}">
 						<tr>
-							<td class="filterable-cell"><a
-								href="info?countryId=<c:out value='${listCountry.countryId}' />"><c:out
-										value=" ${listCountry.countryName}" /></a></td>
 							<td class="filterable-cell"><c:out
-									value=" ${listCountry.cases}" /></td>
+									value=" ${listCity.cityName}" /></td>
 							<td class="filterable-cell"><c:out
-									value=" ${listCountry.active}" /></td>
+									value=" ${listCity.cityCases}" /></td>
 							<td class="filterable-cell"><c:out
-									value=" ${listCountry.recovered}" /></td>
+									value=" ${listCity.beingTreated}" /></td>
 							<td class="filterable-cell"><c:out
-									value=" ${listCountry.deaths}" /></td>
+									value=" ${listCity.cityRecovered}" /></td>
+							<td class="filterable-cell"><c:out
+									value=" ${listCity.cityDeath}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

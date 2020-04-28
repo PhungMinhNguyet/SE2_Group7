@@ -74,7 +74,7 @@ public class CountryResource {
 	@Path("country/{id}")
 	public Country deleteMovie(@PathParam("id") int id) {
 		Country c1 = c.selectCountry(id);
-		if (c1.getCountryId() == 0) {
+		if (c1.getCountryId() != 0) {
 			c.delete(id);
 		}
 		return c1;

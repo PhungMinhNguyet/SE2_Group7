@@ -82,6 +82,36 @@ public class CountryService {
 		}
 		return c;
 	}
+	
+	public Country selectCountry(String countryName) {
+		Country c = null;
+		try {
+			String sql = "SELECT * FROM country WHERE country = ?";
+			PreparedStatement pr = conn.prepareStatement(sql);
+			pr.setString(1, countryName);
+			ResultSet rs = pr.executeQuery();
+			while (rs.next()) {
+				int countryId = rs.getInt("countryId");
+				countryName = rs.getString("country");
+				int cases = rs.getInt("cases");
+				int todayCases = rs.getInt("todayCases");
+				int deaths = rs.getInt("deaths");
+				int todayDeaths = rs.getInt("todayDeaths");
+				int recovered = rs.getInt("recovered");
+				int active = rs.getInt("active");
+				int critical = rs.getInt("critical");
+				double casesPerOneMillion = rs.getDouble("casesPerOneMillion");
+				double deathsPerOneMillion = rs.getDouble("deathsPerOneMillion");
+				double totalTests = rs.getDouble("totalTests");
+				double testsPerOneMillion = rs.getDouble("testsPerOneMillion");
+				c = new Country(countryId, countryName, cases, todayCases, deaths, todayDeaths, recovered, active, critical,
+						casesPerOneMillion, deathsPerOneMillion, totalTests, testsPerOneMillion);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return c;
+	}
 
 	public void insertCountry(Country c) throws SQLException {
 		try {

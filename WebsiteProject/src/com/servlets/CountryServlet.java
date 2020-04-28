@@ -78,7 +78,7 @@ public class CountryServlet extends HttpServlet {
 			Country c = new Country(countryName, cases, todayCases, deaths, todayDeaths, recovered, active, critical,
 					casesPerOneMillion, deathsPerOneMillion, totalTests, testsPerOneMillion);
 			
-			if(countryService.selectCountry(c.getCountryId()) == null) {
+			if(countryService.selectCountry(c.getCountryName()) == null) {
 				countryService.insertCountry(c);
 			} else {
 				countryService.updateCountry(c);

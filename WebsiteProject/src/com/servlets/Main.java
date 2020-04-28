@@ -22,13 +22,16 @@ import org.json.JSONObject;
 
 import com.models.Country;
 import com.models.News;
+import com.models.VietNam;
 import com.service.NewService;
 
 @WebServlet("/")
 public class Main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String url = "http://localhost:8080/WebsiteProject/rest/countries";
+	private static String vnUrl = "http://localhost:8080/WebsiteProject/rest/vn";
 	private NewService news;
+
 	public void init() {
 		news = new NewService();
 	}
@@ -43,6 +46,9 @@ public class Main extends HttpServlet {
 				break;
 			case "/info":
 				viewInfo(request, response);
+				break;
+			case "/vnInfo":
+				viewVNInfo(request, response);
 				break;
 			default:
 				viewHomePage(request, response);
@@ -67,7 +73,7 @@ public class Main extends HttpServlet {
 		String res = target.request().accept(MediaType.APPLICATION_JSON).get(String.class);
 		try {
 			JSONArray myResponse = new JSONArray(res.toString());
-			for (int i = 7; i < 19; i++) {
+			for (int i = 1; i < 11; i++) {
 				JSONObject json = new JSONObject(myResponse.get(i).toString());
 				int countryId = (int) json.get("countryId");
 				String countryName = (String) json.get("countryName");
@@ -78,7 +84,7 @@ public class Main extends HttpServlet {
 				Country c = new Country(countryId, countryName, cases, death, recovered, active);
 				list.add(c);
 			}
-			JSONObject json1 = new JSONObject(myResponse.get(6).toString());
+			JSONObject json1 = new JSONObject(myResponse.get(0).toString());
 			List<Country> lstWorld = new ArrayList<>();
 			int countryId = (int) json1.get("countryId");
 			String countryName = (String) json1.get("countryName");
@@ -91,7 +97,9 @@ public class Main extends HttpServlet {
 			List<Country> lstContinent = new ArrayList<>();
 			for (int i = 0; i < 6; i++) {
 				JSONObject json = new JSONObject(myResponse.get(i).toString());
-				Country c = new Country((int) json.get("countryId"), (String) json.get("countryName"), (int) json.get("cases"), (int) json.get("deaths"), (int) json.get("recovered"), (int) json.get("active"));
+				Country c = new Country((int) json.get("countryId"), (String) json.get("countryName"),
+						(int) json.get("cases"), (int) json.get("deaths"), (int) json.get("recovered"),
+						(int) json.get("active"));
 				lstContinent.add(c);
 			}
 			List<News> lstNews = news.getAllNews();
@@ -115,7 +123,7 @@ public class Main extends HttpServlet {
 		String res = target.request().accept(MediaType.APPLICATION_JSON).get(String.class);
 		try {
 			JSONArray myResponse = new JSONArray(res.toString());
-			for (int i = 7; i < 217; i++) {
+			for (int i = 1; i < 210; i++) {
 				JSONObject json = new JSONObject(myResponse.get(i).toString());
 				int countryId = (int) json.get("countryId");
 				String countryName = (String) json.get("countryName");
@@ -144,7 +152,7 @@ public class Main extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("countryId"));
 		try {
 			JSONArray myResponse = new JSONArray(res.toString());
-			for (int i = 0; i < 217; i++) {
+			for (int i = 0; i < 210; i++) {
 				JSONObject json = new JSONObject(myResponse.get(i).toString());
 				int countryId = (int) json.get("countryId");
 				if (countryId == id) {
@@ -161,6 +169,34 @@ public class Main extends HttpServlet {
 			}
 			request.setAttribute("listInfoCountry", listInfoCountry);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("info_country.jsp");
+			dispatcher.forward(request, response);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void viewVNInfo(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<VietNam> listCity = new ArrayList<>();
+		ClientConfig config = new ClientConfig();
+		Client client = ClientBuilder.newClient(config);
+		WebTarget target = client.target(vnUrl);
+		String res = target.request().accept(MediaType.APPLICATION_JSON).get(String.class);
+		try {
+			JSONArray myResponse = new JSONArray(res.toString());
+			for(int i = 0; i < myResponse.length(); i++) {
+				JSONObject json = new JSONObject(myResponse.get(i).toString());
+				int cityId = (int) json.get("cityId");
+				String cityName = (String) json.get("cityName");
+				int beingTreated = (int) json.get("beingTreated");
+				int cityCases = (int) json.get("cityCases");
+				int cityRecovered = (int) json.get("cityRecovered");
+				int cityDeaths = (int) json.get("cityDeath");
+				VietNam vn1 = new VietNam(cityId, cityName, cityCases, beingTreated, cityRecovered, cityDeaths);
+				listCity.add(vn1);
+			}
+			request.setAttribute("listCity", listCity);
+			RequestDispatcher dispatcher = request.getRequestDispatcher("vietnam_page.jsp");
 			dispatcher.forward(request, response);
 		} catch (JSONException e) {
 			e.printStackTrace();
