@@ -191,7 +191,7 @@ text-align:center;
                
                     <c:forEach var="lstNews" items="${lstNews}">
                         <h3>
-                            <c:out value=" ${lstNews.title}" />
+                           <a href="readNews?id=<c:out value="${lstNews.id}" />"><c:out value=" ${lstNews.title}" /></a> 
                         </h3>
                         <p id="contentNews">
                             <c:out value=" ${lstNews.content}" />

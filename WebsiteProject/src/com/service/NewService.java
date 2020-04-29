@@ -35,12 +35,41 @@ public class NewService {
 				int id = rs.getInt("ID");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
+				System.out.println(id + title);
 				lstNews.add(new News(id, title, content));
 			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return lstNews;
+	}
+	
+	//ADD TO DISPLAY NAV BAR NEW
+	public List<News> getSomeNews(int id){
+		List<News> someNews = new ArrayList<News>();
+		try {
+			System.out.println(id);
+			
+			String sql = "select * from news where not ID = ?";
+			PreparedStatement pr = conn.prepareStatement(sql);
+			pr.setInt(1, id);
+			ResultSet rs = pr.executeQuery();
+			
+			while (rs.next()) {
+				int i = rs.getInt("ID");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				String subContent=  content.substring(0, 50)+"...";
+				String video = rs.getString("video");
+				String image = rs.getString("image");
+				System.out.println(i+ title);
+				someNews.add(new News(i, title, subContent, video, image));
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return someNews;
+
 	}
 
 	public News getNews(int id) {
@@ -54,7 +83,9 @@ public class NewService {
 				id = rs.getInt("ID");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
-				n = new News(id, title, content);
+				String video = rs.getString("video");
+				String image = rs.getString("image");
+				n = new News(id, title, content, video, image);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
