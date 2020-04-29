@@ -5,9 +5,15 @@
 <html>
 <head>
 <style>
+#global{
+padding: 15px;}
 </style>
 <meta charset="ISO-8859-1">
 <title>Corona Virus Tracker</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
@@ -19,7 +25,9 @@
 
 	<div class="row">
 		<div class="container">
-			<h1 class="text-center"><img id="banhmi" alt="This is a show" src="https://whstrojan.com/wp-content/uploads/2019/05/ModernXP-73-Globe-icon.png" style="width: 100px">WORLD</h1>
+			<div id = "header">
+			<h1 class="text-center"><img id="global" alt="This is a show" src="https://whstrojan.com/wp-content/uploads/2019/05/ModernXP-73-Globe-icon.png" style="width: 150px">WORLD</h1>
+			</div>
 			<table class="table table-bordered" id="country">
 				<thead>
 					<tr>
@@ -50,6 +58,7 @@
 			</table>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include><br>
 </body>
 
 </html>

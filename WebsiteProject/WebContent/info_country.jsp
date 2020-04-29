@@ -36,11 +36,7 @@ String dataPoints = gsonObj.toJson(list);
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-#chartContainer{
-text-align: center;
-}
-</style>
+
 <meta charset="ISO-8859-1">
 <script type="text/javascript">
 window.onload = function() { 
@@ -65,15 +61,40 @@ chart.render();
 }
 </script>
 <title>Corona Virus Tracker</title>
+<style>
+#global{
+margin-right: 10px;
+margin-top: 10px;
+}
+.p-3 {
+     padding: 0rem;
+}
+.navbar-light .navbar-brand {
+    padding: 15px 0 15px;
+    FONT-VARIANT: JIS04;
+}
+.text-center{
+    text-align: center!important;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+</style>
+<meta charset="ISO-8859-1">
+<title>Corona Virus Tracker</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
 
+
 </head>
 <body>
 	<jsp:include page="nav_bar.jsp"></jsp:include><br>
-	<div class="row">
+	<div class="main_header">
 		<div class="container">
 			<h3 class="text-center">INFORMATION</h3>
 			<table class="table table-bordered" id="infoCountry">
@@ -109,6 +130,7 @@ chart.render();
 	</div>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<jsp:include page="footer.jsp"></jsp:include><br>
 </body>
 
 </html>

@@ -15,32 +15,15 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-		<header>
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<ul class="nav navbar-nav">
-					<li><a href="<%=request.getContextPath()%>/listuser">User</a></li>
-				</ul>
-				<ul class="nav navbar-nav">
-					<li><a href="<%=request.getContextPath()%>/listNew">News</a></li>
-				</ul>
-
-				<ul class="nav navbar-nav">
-					<li><a href="<%=request.getContextPath()%>/addCity">Add City</a></li>
-				</ul>
-				<ul class="nav navbar-nav">
-					<li><a href="<%=request.getContextPath()%>/logout">Log out</a></li>
-				</ul>
-
-			</div>
-		</nav>
-
-	</header><br>
-
+	
 	<div class="row">
+	<jsp:include page="nav_bar_ad.jsp"></jsp:include>
 		<div class="container">
 			<div id="header">
 				<h1 class="text-center">
@@ -83,6 +66,7 @@
 			</table>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include><br>
 </body>
 
 </html>

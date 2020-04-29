@@ -5,9 +5,6 @@
 <html>
 <head>
 <style>
-#header{
-display: inline;
-}
 </style>
 <meta charset="ISO-8859-1">
 <title>Corona Virus Tracker</title>
@@ -15,7 +12,10 @@ display: inline;
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="nav_bar.jsp"></jsp:include><br>
@@ -55,6 +55,7 @@ display: inline;
 			</table>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include><br>
 </body>
 
 </html>
