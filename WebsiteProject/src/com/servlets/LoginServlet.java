@@ -45,17 +45,12 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String action = request.getServletPath();
+		
 		try {
-			switch (action) {
-			case "/login":
+			
 				viewLogin(request, response);
-				break;
-			case "2":
-				viewAdmin(request, response);
-				break;
+			
 
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -68,11 +63,6 @@ public class LoginServlet extends HttpServlet {
 		dispatcher.forward(request, response);
 	}
 
-	public void viewAdmin(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("admin.jsp");
-		dispatcher.forward(request, response);
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse

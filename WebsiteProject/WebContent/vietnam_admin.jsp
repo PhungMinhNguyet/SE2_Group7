@@ -5,8 +5,14 @@
 <html>
 <head>
 <style>
-#header {
-	display: inline;
+.row{
+margin-bottom: 33rem;
+}
+#tableHeader{
+font-size: 14px;
+}
+#tableBody{
+font-size: 14px;
 }
 </style>
 <meta charset="ISO-8859-1">
@@ -16,14 +22,12 @@
 <link rel="stylesheet" type="text/css"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  
 </head>
 <body>
-	
-	<div class="row">
-	<jsp:include page="nav_bar_ad.jsp"></jsp:include>
+	<jsp:include page="nav_bar_ad.jsp"></jsp:include><br>
+	<br>
+	<div class="row" id= "tab">
 		<div class="container">
 			<div id="header">
 				<h1 class="text-center">
@@ -32,31 +36,32 @@
 						style="width: 150px">VIETNAM
 				</h1>
 			</div>
+			
 			<table class="table table-bordered" id="vietnam">
 				<thead>
 					<tr>
-						<th>City Name</th>
-						<th>Cases</th>
-						<th>Being Treated</th>
-						<th>Recovered</th>
-						<th>Deaths</th>
-						<th>Options</th>
+						<th id="tableHeader">City Name</th>
+						<th id="tableHeader">Cases</th>
+						<th id="tableHeader">Being Treated</th>
+						<th id="tableHeader">Recovered</th>
+						<th id="tableHeader">Deaths</th>
+						<th id="tableHeader">Options</th>
 					</tr>
 				</thead>
-				<tbody style="height: 10px !important; overflow: scroll;">
+				<tbody>
 					<c:forEach var="listCity" items="${listCity}">
 						<tr>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.cityName}" /></td>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.cityCases}" /></td>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.beingTreated}" /></td>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.cityRecovered}" /></td>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.cityDeath}" /></td>
-							<td><a
+							<td id="tableBody"><a
 								href="editCity?id=<c:out value='${listCity.cityId}' />">Edit</a>
 								&nbsp;&nbsp;&nbsp;&nbsp; <a
 								href="deleteCity?id=<c:out value='${listCity.cityId}' />">Delete</a></td>

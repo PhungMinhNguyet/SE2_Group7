@@ -122,11 +122,11 @@ height: 100px;
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="<%=request.getContextPath()%>/admin">Admin Page </a>
+        
           <a class="dropdown-item" href="<%=request.getContextPath()%>/new">Add User</a>
-
-        <a class="dropdown-item" href="<%=request.getContextPath()%>/addCity">Add City </a>
    
-          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="<%=request.getContextPath()%>/insertNew">Add News</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="<%=request.getContextPath()%>/login">Log In</a>
           <a class="dropdown-item" href="<%=request.getContextPath()%>/logout">Log Out </a>

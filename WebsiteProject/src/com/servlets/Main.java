@@ -81,7 +81,9 @@ public class Main extends HttpServlet {
 				int recovered = (int) json.get("recovered");
 				int death = (int) json.get("deaths");
 				int active = (int) json.get("active");
-				Country c = new Country(countryId, countryName, cases, death, recovered, active);
+				int todayCases = (int) json.get("todayCases");
+				int todayDeaths = (int) json.get("todayDeaths");
+				Country c = new Country(countryId, countryName, cases, death, recovered, active, todayCases, todayDeaths);
 				list.add(c);
 			}
 			JSONObject json1 = new JSONObject(myResponse.get(0).toString());
@@ -92,14 +94,14 @@ public class Main extends HttpServlet {
 			int recovered = (int) json1.get("recovered");
 			int death = (int) json1.get("deaths");
 			int active = (int) json1.get("active");
-			Country c1 = new Country(countryId, countryName, cases, death, recovered, active);
+			int todayCases = (int) json1.get("todayCases");
+			int todayDeaths = (int) json1.get("todayDeaths");
+			Country c1 = new Country(countryId, countryName, cases, death, recovered, active, todayCases, todayDeaths);
 			lstWorld.add(c1);
 			List<Country> lstContinent = new ArrayList<>();
 			for (int i = 0; i < 6; i++) {
 				JSONObject json = new JSONObject(myResponse.get(i).toString());
-				Country c = new Country((int) json.get("countryId"), (String) json.get("countryName"),
-						(int) json.get("cases"), (int) json.get("deaths"), (int) json.get("recovered"),
-						(int) json.get("active"));
+				Country c = new Country(countryId, countryName, cases, death, recovered, active, todayCases, todayDeaths);
 				lstContinent.add(c);
 			}
 			List<News> lstNews = news.getAllNews();
@@ -131,7 +133,9 @@ public class Main extends HttpServlet {
 				int recovered = (int) json.get("recovered");
 				int death = (int) json.get("deaths");
 				int active = (int) json.get("active");
-				Country c = new Country(countryId, countryName, cases, death, recovered, active);
+				int todayCases = (int) json.get("todayCases");
+				int todayDeaths = (int) json.get("todayDeaths");
+				Country c = new Country(countryId, countryName, cases, death, recovered, active, todayCases, todayDeaths);
 				listCountry.add(c);
 			}
 			request.setAttribute("listCountry", listCountry);
@@ -162,7 +166,9 @@ public class Main extends HttpServlet {
 					int recovered = (int) json.get("recovered");
 					int death = (int) json.get("deaths");
 					int active = (int) json.get("active");
-					Country c = new Country(countryId, countryName, cases, death, recovered, active);
+					int todayCases = (int) json.get("todayCases");
+					int todayDeaths = (int) json.get("todayDeaths");
+					Country c = new Country(countryId, countryName, cases, death, recovered, active, todayCases, todayDeaths);
 					listInfoCountry.add(c);
 					break;
 				}

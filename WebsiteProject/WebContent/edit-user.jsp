@@ -3,12 +3,20 @@
 <html>
 <head>
 <title>Edit User</title>
+<style>
+
+form{
+margin-bottom: 10rem ;
+}
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-	<jsp:include page="nav_bar.jsp"></jsp:include><br>
+		<jsp:include page="nav_bar_ad.jsp"></jsp:include><br>
+
+	<br>
 
 	<%-- TO-DO: CREATE A FORM FOR UPDATING USER --%>
 	<form action="update" method="post">
@@ -28,5 +36,6 @@
 				Update</button>
 		</fieldset>
 	</form>
+	<jsp:include page="footer.jsp"></jsp:include><br>
 </body>
 </html>

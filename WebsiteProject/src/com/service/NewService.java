@@ -35,7 +35,6 @@ public class NewService {
 				int id = rs.getInt("ID");
 				String title = rs.getString("title");
 				String content = rs.getString("content");
-				System.out.println(id + title);
 				lstNews.add(new News(id, title, content));
 			}
 		} catch (Exception e) {
@@ -62,7 +61,6 @@ public class NewService {
 				String subContent=  content.substring(0, 50)+"...";
 				String video = rs.getString("video");
 				String image = rs.getString("image");
-				System.out.println(i+ title);
 				someNews.add(new News(i, title, subContent, video, image));
 			}
 		} catch (Exception e) {

@@ -56,13 +56,15 @@ public class Country {
 		this.testsPerOneMillion = testsPerOneMillion;
 	}
 
-	public Country(int countryId, String countryName, int cases, int deaths, int recovered, int active) {
+	public Country(int countryId, String countryName, int cases, int deaths, int recovered, int active, int todayCases, int todayDeaths) {
 		this.countryId = countryId;
 		this.countryName = countryName;
 		this.cases = cases;
 		this.deaths = deaths;
 		this.recovered = recovered;
 		this.active = active;
+		this.todayCases = todayCases;
+		this.todayDeaths = todayDeaths;
 	}
 
 	public int getCountryId() {

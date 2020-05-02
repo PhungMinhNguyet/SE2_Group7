@@ -5,6 +5,12 @@
 <html>
 <head>
 <style>
+#tableHeader{
+font-size: 14px;
+}
+#tableBody{
+font-size: 14px;
+}
 </style>
 <meta charset="ISO-8859-1">
 <title>Corona Virus Tracker</title>
@@ -28,26 +34,26 @@
 			<table class="table table-bordered" id="vietnam">
 				<thead>
 					<tr>
-						<th>City Name</th>
-						<th>Cases</th>
-						<th>Being Treated</th>
-						<th>Recovered</th>
-						<th>Deaths</th>
+						<th id="tableHeader">City Name</th>
+						<th id="tableHeader">Cases</th>
+						<th id="tableHeader">Being Treated</th>
+						<th id="tableHeader">Recovered</th>
+						<th id="tableHeader">Deaths</th>
 						
 					</tr>
 				</thead>
 				<tbody style="height: 10px !important; overflow: scroll;">
 					<c:forEach var="listCity" items="${listCity}">
 						<tr>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.cityName}" /></td>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.cityCases}" /></td>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.beingTreated}" /></td>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.cityRecovered}" /></td>
-							<td class="filterable-cell"><c:out
+							<td id="tableBody" class="filterable-cell"><c:out
 									value=" ${listCity.cityDeath}" /></td>
 						</tr>
 					</c:forEach>

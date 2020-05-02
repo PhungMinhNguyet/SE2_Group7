@@ -9,6 +9,9 @@
 	height: 50%;
 		
 }
+.row{
+margin-bottom: 33rem ;
+}
 </style>
 <title>Admin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -57,9 +60,8 @@
 			</table>
 		</div>
 	</div>
+	<jsp:include page="footer.jsp"></jsp:include><br>
 </body>
 </html>
-<body>
 
-</body>
 </html>

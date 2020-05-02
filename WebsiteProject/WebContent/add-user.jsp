@@ -3,13 +3,20 @@
 <html>
 <head>
 <title>Add User</title>
+<style>
+
+form{
+margin-bottom: 10rem ;
+}
+</style>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
 <body>
-	<jsp:include page="nav_bar.jsp"></jsp:include>
+		<jsp:include page="nav_bar_ad.jsp"></jsp:include><br>
 
+	<br>
 	<br>
 	<%-- TO-DO: CREATE A FORM FOR ADDING USER --%>
 	<form action="insert" method="post">
@@ -25,6 +32,6 @@
 		<button type="submit" class=" btn btn-success">ADD</button>
 
 	</form>
-
+<jsp:include page="footer.jsp"></jsp:include><br>
 </body>
 </html>
