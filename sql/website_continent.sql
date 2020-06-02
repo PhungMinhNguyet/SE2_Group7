@@ -16,31 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `vietnam`
+-- Table structure for table `continent`
 --
 
-DROP TABLE IF EXISTS `vietnam`;
+DROP TABLE IF EXISTS `continent`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `vietnam` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `city` varchar(30) NOT NULL,
-  `cases` int(10) NOT NULL,
-  `beingTreated` int(10) NOT NULL,
-  `recovered` int(10) NOT NULL,
-  `deaths` int(10) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
+CREATE TABLE `continent` (
+  `continentId` int(5) NOT NULL AUTO_INCREMENT,
+  `continentName` varchar(50) DEFAULT NULL,
+  `cases` int(15) DEFAULT NULL,
+  `todayCases` int(10) DEFAULT NULL,
+  `deaths` int(10) DEFAULT NULL,
+  `recovered` int(10) DEFAULT NULL,
+  `todayRecovered` int(10) DEFAULT NULL,
+  `active` int(10) DEFAULT NULL,
+  `critical` int(10) DEFAULT NULL,
+  PRIMARY KEY (`continentId`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `vietnam`
+-- Dumping data for table `continent`
 --
 
-LOCK TABLES `vietnam` WRITE;
-/*!40000 ALTER TABLE `vietnam` DISABLE KEYS */;
-INSERT INTO `vietnam` VALUES (1,'Hanoi',114,1,113,0),(2,'Ho Chi Minh',59,5,54,0),(3,'Thai Binh',30,21,9,0),(4,'Bac Lieu',21,0,21,0),(5,'Vinh Phuc',19,0,19,0),(6,'Ninh Binh',8,0,8,0),(7,'Binh Thuan',9,0,9,0),(8,'Quang Ninh',8,0,8,0),(9,'Dong Thap',5,0,5,0),(10,'Bac Giang',4,0,4,0),(11,'Ha Tinh',4,0,4,0),(12,'Tay Ninh',4,0,4,0),(13,'Hai Duong',4,3,1,0),(14,'Ha Nam',4,0,4,0),(15,'Quang Nam',3,0,3,0),(16,'Thanh Hoa',3,0,3,0),(17,'Can Tho',2,0,2,0),(18,'Tra Vinh',2,0,2,0),(19,'Ninh Thuan',2,0,2,0),(20,'Lao Cai',2,0,2,0),(21,'Thua Thien Hue',2,0,2,0),(22,'Hung Yen',1,0,1,0),(23,'Dong Nai',1,0,1,0),(24,'Ha Giang',1,0,1,0),(25,'Khanh Hoa',1,0,1,0),(26,'Ben Tre',1,0,1,0),(27,'Bac Ninh',1,0,1,0),(28,'Thai Nguyen',1,0,1,0),(29,'Lai Chau',1,0,1,0);
-/*!40000 ALTER TABLE `vietnam` ENABLE KEYS */;
+LOCK TABLES `continent` WRITE;
+/*!40000 ALTER TABLE `continent` DISABLE KEYS */;
+INSERT INTO `continent` VALUES (1,'North America',2097741,3728,125921,759763,3312,1212057,19254),(2,'South America',907227,549,41120,362446,169,503661,11398),(3,'Europe',2043912,9644,174890,1009973,16017,859049,8760),(4,'Asia',1182564,18769,31532,722064,9151,428968,13623),(5,'Africa',155282,375,4372,66475,544,84435,345),(6,'Australia/Oceania',8831,17,124,8208,7,499,4);
+/*!40000 ALTER TABLE `continent` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

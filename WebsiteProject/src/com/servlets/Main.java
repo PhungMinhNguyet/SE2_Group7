@@ -20,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.models.Continent;
 import com.models.Country;
 import com.models.News;
 import com.models.VietNam;
@@ -30,6 +31,7 @@ public class Main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static String url = "http://localhost:8080/WebsiteProject/rest/countries";
 	private static String vnUrl = "http://localhost:8080/WebsiteProject/rest/vn";
+	private static String continentUrl = "http://localhost:8080/WebsiteProject/rest/continents";
 	private NewService news;
 
 	public void init() {
@@ -98,15 +100,9 @@ public class Main extends HttpServlet {
 			int todayDeaths = (int) json1.get("todayDeaths");
 			Country c1 = new Country(countryId, countryName, cases, death, recovered, active, todayCases, todayDeaths);
 			lstWorld.add(c1);
-			List<Country> lstContinent = new ArrayList<>();
-			for (int i = 0; i < 6; i++) {
-				JSONObject json = new JSONObject(myResponse.get(i).toString());
-				Country c = new Country(countryId, countryName, cases, death, recovered, active, todayCases, todayDeaths);
-				lstContinent.add(c);
-			}
+			viewContinent(request, response);
 			List<News> lstNews = news.getAllNews();
 			request.setAttribute("lstNews", lstNews);
-			request.setAttribute("lstContinent", lstContinent);
 			request.setAttribute("lstWorld", lstWorld);
 			request.setAttribute("listCountry", list);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("main.jsp");
@@ -115,7 +111,36 @@ public class Main extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
-
+	public void viewContinent(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		List<Continent> lstContinent = new ArrayList<>();
+		ClientConfig config = new ClientConfig();
+		Client client = ClientBuilder.newClient(config);
+		WebTarget target = client.target(continentUrl);
+		String res = target.request().accept(MediaType.APPLICATION_JSON).get(String.class);
+		try {
+			JSONArray myResponse = new JSONArray(res.toString());
+			for (int i = 0; i < 6; i++) {
+				JSONObject json = new JSONObject(myResponse.get(i).toString());
+				int continentId = (int) json.get("continentId");
+				String continentName = (String) json.get("continentName");
+				int continentCases = (int) json.get("continentCases");
+				int continentTodayCases = (int) json.get("continentTodayCases");
+				int continentDeaths = (int) json.get("continentDeaths");
+				int continentRecovered = (int) json.get("continentRecovered");
+				int continentTodayRecovered = (int) json.get("continentTodayRecovered");
+				int continentActive = (int) json.get("continentActive");
+				int continentCritical = (int) json.get("continentCritical");
+				Continent c1 = new Continent(continentId, continentName, continentCases, continentTodayCases, continentDeaths, continentRecovered, continentTodayRecovered, continentActive, continentCritical);
+				lstContinent.add(c1);
+			}
+			request.setAttribute("lstContinent", lstContinent);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	
 	public void viewAllCountry(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		List<Country> listCountry = new ArrayList<>();

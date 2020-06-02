@@ -140,13 +140,12 @@ text-align:center;
 				<tbody>
 					<c:forEach var="lstContinent" items="${lstContinent}">
 						<tr>
-							<td><a
-								href="info?countryId=<c:out value='${lstContinent.countryId}' />"><c:out
-										value="${lstContinent.countryName}" /></a></td>
-							<td><c:out value="${lstContinent.cases}" /></td>
-							<td><c:out value="${lstContinent.active}" /></td>
-							<td><c:out value="${lstContinent.recovered}" /></td>
-							<td><c:out value="${lstContinent.deaths}" /></td>
+							<td><c:out
+										value="${lstContinent.continentName}" /></td>
+							<td><c:out value="${lstContinent.continentCases}" /></td>
+							<td><c:out value="${lstContinent.continentActive}" /></td>
+							<td><c:out value="${lstContinent.continentRecovered}" /></td>
+							<td><c:out value="${lstContinent.continentDeaths}" /></td>
 						</tr>
 					</c:forEach>
 				</tbody>

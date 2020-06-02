@@ -1,29 +1,36 @@
 package com.servlets;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import org.json.JSONObject;
-
-import com.models.Country;
-import com.service.CountryService;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
 
-@WebServlet("/CountryServlet")
-public class CountryServlet extends HttpServlet {
+import com.models.Continent;
+import com.service.ContinentService;
+
+@WebServlet("/ContinentServlet")
+public class ContinentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private static CountryService countryService;
+	private static ContinentService continentService;
 
 	public void init() {
-		countryService = new CountryService();
+		continentService = new ContinentService();
+	}
+	
+	public ContinentServlet() {
+		super();
+
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -31,29 +38,24 @@ public class CountryServlet extends HttpServlet {
 		try {
 			call_me();
 		} catch (Exception e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		doGet(request, response);
 	}
-
-	public static void call_me() throws Exception {
-		insertData(0, 4);
-//		insertData(6, 13);
-		insertData(6, 21);
-		insertData(22, 24);
-		insertData(25, 220);
-//		insertData(0, 220);
-	}
 	
+	public static void call_me() throws Exception {
+		insertData(0, 6);
+
+	}
 	public static void insertData(int position, int length) throws Exception{
-		String url = "https://coronavirus-19-api.herokuapp.com/countries";
+		String url = "https://corona.lmao.ninja/v2/continents";
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+		con.addRequestProperty("User-Agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)");
 		BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 		String inputLine;
 		StringBuilder response = new StringBuilder();
@@ -64,26 +66,22 @@ public class CountryServlet extends HttpServlet {
 		JSONArray myResponse = new JSONArray(response.toString());
 		for (int i = position; i < length; i++) {
 			JSONObject res = new JSONObject(myResponse.get(i).toString());
-			String countryName = (String) res.get("country");
+			String continentName = (String) res.get("continent");
 			int cases = (int) res.get("cases");
 			int todayCases = (int) res.get("todayCases");
 			int deaths = (int) res.get("deaths");
-			int todayDeaths = (int) res.get("todayDeaths");
 			int recovered =  (int) res.get("recovered");
+			int todayRecovered =  (int) res.get("todayRecovered");
 			int active = (int) res.get("active");
 			int critical = (int) res.get("critical");
-			double casesPerOneMillion = (double) res.getDouble("casesPerOneMillion");
-			double deathsPerOneMillion = (double) res.getDouble("deathsPerOneMillion");
-			double totalTests = (double) res.getDouble("totalTests");
-			double testsPerOneMillion = (double) res.getDouble("testsPerOneMillion");
-			Country c = new Country(countryName, cases, todayCases, deaths, todayDeaths, recovered, active, critical,
-					casesPerOneMillion, deathsPerOneMillion, totalTests, testsPerOneMillion);
-			
-			if(countryService.selectCountry(c.getCountryName()) == null) {
-				countryService.insertCountry(c);
+			Continent c = new Continent(continentName, cases, todayCases, deaths, recovered, todayRecovered, active, critical);
+			if(continentService.selectContinent(c.getContinentName()) == null) {
+				continentService.insertContinent(c);
 			} else {
-				countryService.updateCountry(c);
+				continentService.updateContinent(c);
 			}
+		
 		}
 	}
+
 }
